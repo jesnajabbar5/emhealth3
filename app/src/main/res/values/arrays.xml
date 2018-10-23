@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="relation_array" />
+    <string-array name="sex_array" />
+</resources>

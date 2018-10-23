@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="spinner1" type="id" />
+    <item name="spinner" type="id" />
+    <item name="splsh" type="id" />
+    <item name="nemail" type="id" />
+    <item name="nspinner" type="id" />
+    <item name="npass" type="id" />
+    <item name="next" type="id" />
+</resources>

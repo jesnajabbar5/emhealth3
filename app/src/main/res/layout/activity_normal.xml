@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Normal"
+    android:background="@drawable/relief">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        >
+        <RelativeLayout
+
+            android:padding="25dp"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:text="Enter Details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/ntextView"
+                android:gravity="center"
+                android:textSize="25dp"
+                android:textColor="#fff"/>
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:background="#fbfefd"
+                android:inputType="textPersonName"
+
+                android:layout_below="@+id/ntextView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:id="@+id/nPname"
+                android:hint="Name"
+                android:gravity="center"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/nage"
+                android:hint="Age"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/nPname"
+                android:background="#fbfefd"
+                />
+
+            <Spinner
+                android:id="@+id/nspinner"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/nage"
+                android:layout_marginTop="10dp"
+                android:background="#fbfefd"
+                android:gravity="center"
+                android:popupBackground="#fbfefd"
+                android:entries="@array/Gender"
+                android:prompt="@string/Gender_prompt"
+                android:visibility="visible">
+
+            </Spinner>
+
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:background="#fbfefd"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:layout_below="@+id/nspinner"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:id="@+id/nemail"
+                android:hint="Email"
+                android:gravity="center"/>
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:background="#fbfefd"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:layout_below="@+id/nemail"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:id="@+id/npass"
+                android:hint="Email"
+                android:gravity="center"/>
+
+            <Button
+                android:text="Answer For Questions"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/npass"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:id="@+id/Submit"
+                android:textColor="#ffffff"
+                android:textSize="20dp"
+                android:background="#9eb3ff"
+                android:layout_marginBottom="25dp"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".Family"
+    android:background="@drawable/relief"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        >
+        <RelativeLayout
+
+            android:padding="25dp"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:text="Enter Details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/textView"
+                android:gravity="center"
+                android:textSize="25dp"
+                android:textColor="#fff"/>
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:background="#fbfefd"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:layout_below="@+id/textView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:id="@+id/nPname"
+                android:hint="Person's Name"
+                android:gravity="center"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/age"
+                android:hint="Age"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/nPname"
+                android:background="#fbfefd"
+                />
+
+            <Spinner
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:layout_below="@+id/age"
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:entries="@array/sex_array"
+                android:prompt="@string/sex"
+                android:popupBackground="#fbfefd"
+                android:background="#fbfefd">
+
+            </Spinner>
+
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:background="#fbfefd"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:layout_below="@+id/spinner"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:id="@+id/Name"
+                android:hint="Your Name"
+                android:gravity="center"/>
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:background="#fbfefd"
+                android:inputType="textEmailAddress"
+                android:ems="10"
+                android:layout_below="@+id/Name"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:id="@+id/editTextEmail"
+                android:hint="Enter Your Email"
+                android:gravity="center"/>
+
+
+
+
+
+            <Spinner
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:layout_below="@+id/editTextEmail"
+                android:id="@+id/spinner1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:entries="@array/relation_array"
+                android:prompt="@string/rl"
+                android:popupBackground="#fbfefd"
+                android:background="#fbfefd">
+
+            </Spinner>
+
+            <Button
+                android:text="Answer For Questions"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spinner1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:id="@+id/Submit"
+                android:textColor="#ffffff"
+                android:textSize="20dp"
+                android:background="#9eb3ff"
+                android:layout_marginBottom="25dp"/>
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
