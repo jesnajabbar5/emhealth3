@@ -7,4 +7,5 @@
     <item name="nspinner" type="id" />
     <item name="npass" type="id" />
     <item name="next" type="id" />
+    <item name="login" type="id" />
 </resources>

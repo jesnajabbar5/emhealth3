@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">emhealth</string>
+    <string name="app_name">EmHealth</string>
     <string name="sex" />
     <string name="rl" />
     <string name="Gender_prompt">Gender</string>

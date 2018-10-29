@@ -29,7 +29,7 @@ public class start extends Activity {
             @Override
             public void onClick(View v) {
 
-                Intent intent=new Intent(start.this,AddQuestion.class);
+                Intent intent=new Intent(start.this,MainActivity.class);
                 startActivity(intent);
 
             }
