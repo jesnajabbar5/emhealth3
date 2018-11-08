@@ -3,6 +3,7 @@ package com.example.jesna.emhealth;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
      Button login;
      Button newuser;
      TextView email;
+     String sharedmail;
      TextView password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,8 +80,17 @@ public class MainActivity extends AppCompatActivity {
                         status[0] = (String) object.getString("status");
                         if (status[0].equals("true")) {
 
-                            Intent intent = new Intent(MainActivity.this, AddQuestion.class);
-                            startActivity(intent);
+                            if(emailn.equals("admin@gmail.com")&& passwordn.equals("admin"))
+                            {
+                                sharedmail=emailn;
+                                Intent intent = new Intent(MainActivity.this, AddQuestion.class);
+                                startActivity(intent);
+                            }
+                        else {
+                                sharedmail=emailn;
+                                Intent intent = new Intent(MainActivity.this, Answer_Question.class);
+                                startActivity(intent);
+                            }
                         } else {
                             Toast toast = Toast.makeText(MainActivity.this, "Invalid Username or Password ", Toast.LENGTH_SHORT);
                             toast.show();
@@ -116,53 +127,18 @@ public class MainActivity extends AppCompatActivity {
 
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             requestQueue.add(stringRequest);
-        }}
+
+            SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
+            SharedPreferences.Editor editor = pref.edit();
+            editor.putString("sharedmail",sharedmail);
+            editor.commit();
+        }
+
+
+
+}
 
 
 
 
 
-     /* login.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-         String passw=
-                if()
-                Intent intent=new Intent(MainActivity.this,Family.class);
-                startActivity(intent);
-            }
-        });
-
-        nor=findViewById(R.id.normal_button);
-        nor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent=new Intent(MainActivity.this,Normal.class);
-                startActivity(intent);
-
-            }
-        });
-
-
-      login.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-              Intent intent=new Intent(MainActivity.this,);
-              startActivity(intent);
-
-          }
-      });
-*/
-
-
-/*login.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-
-        Intent intent=new Intent(MainActivity.this,Answer_Question.class);
-        startActivity(intent);
-    }
-});
-    }
-
-}*/

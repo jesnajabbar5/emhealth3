@@ -1,6 +1,8 @@
 package com.example.jesna.emhealth;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -30,6 +32,9 @@ public class Answer_Question extends AppCompatActivity {
     Button next;
     String question[], answer[];
     String value;
+    String sharedemail;
+    int count=0;
+    int qid;
     public static TextView qst;
     String URL_POST = "https://servetechnoresearch.com/Emotion/response.php";
     String URL_POST_fetch = "https://servetechnoresearch.com/Emotion/fetch_question.php";
@@ -59,9 +64,12 @@ public class Answer_Question extends AppCompatActivity {
 
         //   fetchData process = new fetchData();
         // process.execute();
+        SharedPreferences prefs = getSharedPreferences("MyPref", MODE_PRIVATE);
+        sharedemail = prefs.getString("sharedmail","");
+      // Toast.makeText(Answer_Question.this,sharedemail,Toast.LENGTH_SHORT).show();
+       // getSharedemail1=sharedemail.toString();
 
         DisplayQuestion();
-
 
     }
 
@@ -77,8 +85,7 @@ public class Answer_Question extends AppCompatActivity {
                 // find the radiobutton by returned id
                 radioButton = (RadioButton) findViewById(selectedId);
 
-                Toast.makeText(Answer_Question.this,
-                        radioButton.getText(), Toast.LENGTH_SHORT).show();
+
                 if (radioButton== opt1)
                 {
                     value="1";
@@ -97,6 +104,7 @@ public class Answer_Question extends AppCompatActivity {
                 }
 
                 InsertRESPONSE();
+                count++;
                 }
 
         }
@@ -125,10 +133,12 @@ public class Answer_Question extends AppCompatActivity {
             @Override
             protected Map<String,String> getParams()throws AuthFailureError {
                 Map<String,String> params=new HashMap<String,String>();
+                Toast.makeText(Answer_Question.this,sharedemail,Toast.LENGTH_SHORT).show();
 
+                params.put("RMAIL","meh@gmail.com");
+                params.put("QID", "11");
                 params.put("RESPONSE",value);
-                params.put("RID","111");
-                params.put("ID","222");
+
 
                 return params;
 
@@ -152,7 +162,8 @@ public class Answer_Question extends AppCompatActivity {
                     try {
 
                         JSONArray array = new JSONArray(response);
-                        JSONObject object = array.getJSONObject(0);
+                        JSONObject object = array.getJSONObject(count);
+                        qid=count+1;
                         String questionn = object.getString("QUESTION");
                         String op1 = object.getString("OPTION1");
                         String op2 = object.getString("OPTION2");
