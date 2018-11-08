@@ -100,11 +100,11 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:id="@+id/npass"
-                android:hint="Email"
+                android:hint="Password"
                 android:gravity="center"/>
 
             <Button
-                android:text="Answer For Questions"
+                android:text="SUBMIT"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/npass"
