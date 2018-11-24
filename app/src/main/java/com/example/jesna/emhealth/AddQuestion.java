@@ -29,7 +29,7 @@ public class AddQuestion extends AppCompatActivity {
     String option2 ;
     String option3 ;
     String option4 ;
-    String URL_POST="https://servetechnoresearch.com/Emotion/addquestion.php";
+    String URL_POST="https://emhealth.000webhostapp.com/addquestion.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

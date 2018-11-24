@@ -30,7 +30,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
      String result;
      String[] status = {"false"};
-     String URL_POST = "https://servetechnoresearch.com/Emotion/login.php";
+     String URL_POST = "https://emhealth.000webhostapp.com/login.php";
      String emailn;
      String passwordn;
      Button login;
@@ -86,9 +86,17 @@ public class MainActivity extends AppCompatActivity {
                                 Intent intent = new Intent(MainActivity.this, AddQuestion.class);
                                 startActivity(intent);
                             }
-                        else {
+                        else if (emailn.equals("")|| passwordn.equals("")) {
+                                Toast toast = Toast.makeText(MainActivity.this, "Please enter username or password ", Toast.LENGTH_SHORT);
+                                toast.show();
+                            }
+
+                        else
+                            {
                                 sharedmail=emailn;
+                               // Toast.makeText(MainActivity.this,sharedmail,Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(MainActivity.this, Answer_Question.class);
+                                intent.putExtra("HUPEmail",sharedmail);
                                 startActivity(intent);
                             }
                         } else {

@@ -26,7 +26,7 @@ public class Normal extends AppCompatActivity {
     EditText age;
     EditText pass;
     Spinner gender;
-    String URL_POST="https://servetechnoresearch.com/Emotion/hupreg.php";
+    String URL_POST="https://emhealth.000webhostapp.com/registration.php";
     String value1;
     String value2;
     String value3 ;
