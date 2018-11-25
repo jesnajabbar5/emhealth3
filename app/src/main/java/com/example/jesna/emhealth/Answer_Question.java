@@ -100,20 +100,23 @@ public class Answer_Question extends AppCompatActivity {
                 {
                     value="4";
                 }
-                if(i!=20) {
 
-                    qid=Integer.toString(i+1);
+                i++;
+                if(i!=20) {
                     DisplayQuestion(i);
+                    qid=Integer.toString(i+1);
+
                 }
 
                 if(i==20)
                 {
                     Intent intent = new Intent(Answer_Question.this, Stage1.class);
+                    intent.putExtra("HUPEmail",sharedemail);
                     startActivity(intent);
                 }
 
 
-                i++;
+
                 InsertRESPONSE();
                 radioGroup.clearCheck();
 

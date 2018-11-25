@@ -62,7 +62,7 @@ public class Stage1 extends AppCompatActivity {
                     String test = object.getString("rsum");
 
 
-                 //  Toast.makeText(Stage1.this,test, Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(Stage1.this,test, Toast.LENGTH_SHORT).show();
                    if(Integer.parseInt(test)<53)
                     {
                         res.setText("Don't worry,You have NO DEPPRESSION !!! May be you are stressed out of your work load..We recommend you to have a talk with someone you like...");

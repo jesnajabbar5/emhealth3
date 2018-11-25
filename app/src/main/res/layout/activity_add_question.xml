@@ -32,7 +32,7 @@
 
                 <EditText
                     android:id="@+id/ques"
-                    android:layout_width="167dp"
+                    android:layout_width="371dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="200dp"
                     android:ems="10"
