@@ -28,16 +28,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-     String result;
-     String[] status = {"false"};
-     String URL_POST = "https://emhealth.000webhostapp.com/login.php";
-     String emailn;
-     String passwordn;
-     Button login;
-     Button newuser;
-     TextView email;
-     String sharedmail;
-     TextView password;
+    String result;
+    String[] status = {"false"};
+    String URL_POST = "https://emhealth.000webhostapp.com/login.php";
+    String URL_CLEAR= "https://emhealth.000webhostapp.com/clear.php";
+    String emailn;
+    String passwordn;
+    Button login;
+    Button newuser;
+    TextView email;
+    String sharedmail;
+    TextView password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         newuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,Normal.class);
+                Intent intent = new Intent(MainActivity.this, Normal.class);
                 startActivity(intent);
 
             }
@@ -65,88 +67,116 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-        private void Correct () {
-            emailn = email.getText().toString();
-            passwordn = password.getText().toString();
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_POST, new Response.Listener<String>() {
-                @Override
+    private void Correct() {
+        emailn = email.getText().toString();
+        passwordn = password.getText().toString();
 
-                public void onResponse(String response) {
-                    try {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_POST, new Response.Listener<String>() {
+            @Override
 
-                        JSONObject object = new JSONObject(response);
+            public void onResponse(String response) {
+                try {
 
-                        status[0] = (String) object.getString("status");
-                        if (status[0].equals("true")) {
+                    JSONObject object = new JSONObject(response);
 
-                            if(emailn.equals("admin@gmail.com")&& passwordn.equals("admin"))
-                            {
-                                sharedmail=emailn;
-                                Intent intent = new Intent(MainActivity.this, AddQuestion.class);
-                                startActivity(intent);
-                            }
-                        else if (emailn.equals("")|| passwordn.equals("")) {
-                                Toast toast = Toast.makeText(MainActivity.this, "Please enter username or password ", Toast.LENGTH_SHORT);
-                                toast.show();
-                            }
+                    status[0] = (String) object.getString("status");
+                    if (status[0].equals("true")) {
 
-                        else
-                            {
-                                sharedmail=emailn;
-                               // Toast.makeText(MainActivity.this,sharedmail,Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(MainActivity.this, Answer_Question.class);
-                                intent.putExtra("HUPEmail",sharedmail);
-                                startActivity(intent);
-                            }
-                        } else {
-                            Toast toast = Toast.makeText(MainActivity.this, "Invalid Username or Password ", Toast.LENGTH_SHORT);
+                        if (emailn.equals("admin@gmail.com") && passwordn.equals("admin")) {
+                            sharedmail = emailn;
+                            Intent intent = new Intent(MainActivity.this, AddQuestion.class);
+                            startActivity(intent);
+                        } else if (emailn.equals("") || passwordn.equals("")) {
+                            Toast toast = Toast.makeText(MainActivity.this, "Please enter username or password ", Toast.LENGTH_SHORT);
                             toast.show();
+                        } else {
+                            sharedmail = emailn;
+                            // Toast.makeText(MainActivity.this,sharedmail,Toast.LENGTH_SHORT).show();
+                            cleardb();
+                            Intent intent = new Intent(MainActivity.this, Answer_Question.class);
+                            intent.putExtra("HUPEmail", sharedmail);
+                            startActivity(intent);
                         }
-
-
-                    } catch (Exception e) {
-
-                        Toast.makeText(MainActivity.this, "exception\n" + e.getMessage().toString(), Toast.LENGTH_SHORT).show();
-
-
+                    } else {
+                        Toast toast = Toast.makeText(MainActivity.this, "Invalid Username or Password ", Toast.LENGTH_SHORT);
+                        toast.show();
                     }
 
 
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
-                }
+                } catch (Exception e) {
 
-            }) {
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> params = new HashMap<String, String>();
+                    Toast.makeText(MainActivity.this, "exception\n" + e.getMessage().toString(), Toast.LENGTH_SHORT).show();
 
-                    params.put("EMAIL", emailn);
-                    params.put("PASSWORD", passwordn);
-                    return params;
 
                 }
-            };
 
 
-            RequestQueue requestQueue = Volley.newRequestQueue(this);
-            requestQueue.add(stringRequest);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+            }
 
-            SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
-            SharedPreferences.Editor editor = pref.edit();
-            editor.putString("sharedmail",sharedmail);
-            editor.commit();
-        }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
 
+                params.put("EMAIL", emailn);
+                params.put("PASSWORD", passwordn);
+                return params;
+
+            }
+        };
+
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("sharedmail", sharedmail);
+        editor.commit();
+
+
+    }
+
+
+    private void cleardb() {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_CLEAR, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(MainActivity.this, "error", Toast.LENGTH_SHORT).show();
+            }
+
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+
+                params.put("DMAIL", sharedmail);
+
+                return params;
+
+
+            }
+        };
+
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+
+    }
 
 
 }
-
-
-
-
-

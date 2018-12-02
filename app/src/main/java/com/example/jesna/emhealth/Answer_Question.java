@@ -102,26 +102,27 @@ public class Answer_Question extends AppCompatActivity {
                 }
 
                 i++;
-                if(i!=20) {
-                    DisplayQuestion(i);
-                    qid=Integer.toString(i+1);
 
-                }
 
                 if(i==20)
                 {
+                    InsertRESPONSE();
                     Intent intent = new Intent(Answer_Question.this, Stage1.class);
                     intent.putExtra("HUPEmail",sharedemail);
                     startActivity(intent);
                 }
 
-
-
-                InsertRESPONSE();
-                radioGroup.clearCheck();
-
+                if(i!=20) {
+                    InsertRESPONSE();
+                    DisplayQuestion(i);
+                    qid=Integer.toString(i);
+                    radioGroup.clearCheck();
 
                 }
+
+
+
+            }
 
         }
         );

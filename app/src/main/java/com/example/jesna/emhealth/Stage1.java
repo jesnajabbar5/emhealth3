@@ -83,7 +83,9 @@ public class Stage1 extends AppCompatActivity {
                             @Override
                             public void onClick(View v) {
                                 Intent intent = new Intent(Stage1.this, LifeStatus.class);
+                                intent.putExtra("HUPEmail",dmail);
                                 startActivity(intent);
+
                             }
                         });
 
@@ -124,76 +126,6 @@ public class Stage1 extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    //private void calculate(final int i) {
-
-
-        //StringRequest stringRequest=new StringRequest(Request.Method.POST,URL_DIAGNOSIS,new Response.Listener<String>(){
-
-           // public void onResponse(String response){
-            //Toast.makeText(Stage1.this,response,Toast.LENGTH_SHORT).show();
-               /*try {
-                    JSONArray array = new JSONArray(response);
-
-                  //  while(array.length()>0) {
-
-                        JSONObject object = array.getJSONObject(0);
-                        //t=object.getString("RESPONSE");
-                   String questionn = object.getString("rsum");
-
-                   //Toast.makeText(Stage1.this,,Toast.LENGTH_SHORT).show();
-                        Toast.makeText(Stage1.this,questionn,Toast.LENGTH_SHORT).show();
-
-                 //   }
-
-
-                }*/
-                   /* StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_DIAGNOSIS, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-
-
-                    try {
-                        JSONArray array = new JSONArray(response);
-                        // JSONObject object = array.getJSONObject(0);
-                        JSONObject object = array.getJSONObject(i);
-                        //  qid=count+1;
-                        String questionn = object.getString("rsum");
-
-                    Toast.makeText(Stage1.this,questionn, Toast.LENGTH_SHORT).show();
-                    // Toast.makeText(Answer_Question.this,response, Toast.LENGTH_SHORT).show();
-
-                }
-                catch (Exception e) {
-
-                    Toast.makeText(Stage1.this, "exception\n" + e.getMessage().toString(), Toast.LENGTH_SHORT).show();
-
-
-                }
-
-            }
-        },new Response.ErrorListener(){
-            @Override
-            public void onErrorResponse(VolleyError error){
-                Toast.makeText(Stage1.this,error.getMessage(),Toast.LENGTH_SHORT).show();
-            }
-
-        }){
-            @Override
-            protected Map<String,String> getParams()throws AuthFailureError {
-                Map<String,String> params=new HashMap<String,String>();
-
-                params.put("DMAIL",dmail);
-
-                return params;
-
-
-            }
-        };
-
-
-
-        RequestQueue requestQueue= Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);*/
     }
 
 
